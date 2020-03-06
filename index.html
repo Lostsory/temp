@@ -62,7 +62,7 @@
                             <div>
                                 <h1 class="typer-target">一站式互联网解决方案1</h1>
                                 <p class="attention">专注于创意设计和用户体验</p>
-                                <p class="more-p hidden-xs"><span>查看更多</span><span class="more"></span></p>
+                                <p class="more-p hidden-xs"><span>查看更多</span><i></i></p>
                             </div>
                         </div>
                         <div class="right-content-con col-xs-12 col-sm-5 hidden-xs">
@@ -74,7 +74,7 @@
                             <div>
                                 <h1 class="typer-target">一站式互联网解决方案2</h1>
                                 <p class="attention">专注于创意设计和用户体验</p>
-                                <p class="more-p hidden-xs"><span>查看更多</span><span class="more"></span></p>
+                                <p class="more-p hidden-xs"><span>查看更多</span><i></i></p>
                             </div>
                         </div>
                         <div class="right-content-con col-xs-12 col-sm-5 hidden-xs">
@@ -86,7 +86,7 @@
                             <div>
                                 <h1 class="typer-target">一站式互联网解决方案3</h1>
                                 <p class="attention">专注于创意设计和用户体验</p>
-                                <p class="more-p hidden-xs"><span>查看更多</span><span class="more"></span></p>
+                                <p class="more-p hidden-xs"><span>查看更多</span><i></i></p>
                             </div>
                         </div>
                         <div class="right-content-con col-xs-12 col-sm-5 hidden-xs">
@@ -98,7 +98,7 @@
                 <div class="swiper-pagination own-pagination hidden-xs"></div>
                 
                 <div class="btn-con hidden-xs">
-                    <div class="button-dir button-prev disabled"></div>
+                    <div class="button-dir button-prev"></div>
                     <div class="button-dir button-next"></div>
                 </div>
                 <img class="mouse" src="./img/mouse.png" alt="">
@@ -137,8 +137,7 @@
                     <p>Exhibition</p>
                 </div>
                 <div class="work-list-wrap hidden-xs">
-                    <ul class="work-list-con"></ul>
-                    <p class="more-p"><a href="./html/worklist.html">查看更多</a><span class="more"></span></p> 
+                    <ul class="work-list-con row"></ul>
                 </div>
                 <div class="work-list-wrap visible-xs">
                     <div class="work-list-con">
@@ -148,6 +147,7 @@
                     </div>
                 </div>
             </div>
+            <p class="more-p hidden-xs"><a href="./html/worklist.html">查看更多</a><i></i></p>
             <div class="visible-xs more-p-m"><a href="./html/worklist.html">查看更多</a></div>
         </div>
         <div class="section news">
@@ -156,30 +156,47 @@
                     <p>News <span>经验分享</span></p>
                     <p>Experience</p>
                 </div>
-                <ul class="news-list-con row"></ul>
                 <div class="module-title my-font hidden-xs">
                     <p>News <span>经验分享</span></p>
                     <p>Experience</p>
                 </div>
+                <ul class="news-list-con row"></ul>
             </div>
+            <p class="more-p hidden-xs"><a href="./html/newslist.html">查看更多</a><i></i></p>
             <div class="visible-xs more-p-m"><a href="./html/newslist.html">查看更多</a></div>
         </div>
         <div class="section contact">
             <div class="contact-con">
                 <div class="module-title my-font">
-                    <p>us <span>联系我们</span></p>
-                    <p>Contact</p>
+                    <p>Contact <span>联系我们</span></p>
+                    <p>us</p>
                 </div>
-                <div class="bg-con visible-xs">
-                    <p style="margin-bottom: .16rem">PHONE：15001316528</p> 
-                    <p>MAIL：wtongmy@163.com</p> 
+                <div class="row hidden-xs">
+                    <div class="col-xs-12 col-sm-6">
+                        <p class="font" style="margin: 60px 0 24px;">电话：</p>
+                        <p  style="margin-bottom: 80px;font-size: 24px; color: #FF4140; line-height: 24px; font-weight: 500">15001316528</p>
+                        <p class="font"  style="margin-bottom: 31px;">邮箱：</p>
+                        <p  style="color: #191F38; font-weight: 500">wtongmy@163.com</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <input type="text" placeholder="您的姓名">
+                        <input type="text" placeholder="您的电话">
+                        <textarea rows="2" placeholder="留言内容"></textarea>
+                        <div class="sumbit_btn">提交<i></i></div>
+                    </div>
                 </div>
-                <div class="bg-con hidden-xs">
-                    <span>PHONE：15001316528</span> 
-                    <span style="margin-left: 40px">MAIL：wtongmy@163.com</span> 
+                <div class="visible-xs">
+                    <p class="font" style="margin: 0 0 .16rem;">电话：</p>
+                    <p  style="margin-bottom: .56rem;font-size: .28rem; color: #FF4140; line-height: .28rem; font-weight: 500">15001316528</p>
+                    <p class="font"  style="margin-bottom: .16rem;">邮箱：</p>
+                    <p  style="color: #191F38;margin-bottom: .8rem; font-weight: 500">wtongmy@163.com</p>
+                    <input type="text" placeholder="您的姓名">
+                    <input type="text" placeholder="您的电话">
+                    <textarea rows="2" placeholder="留言内容"></textarea>
                 </div>
-                <!-- <a href="mailto:2462393505@qq.com">反馈</a>   -->
             </div>
+            <div class="visible-xs more-p-m">提交</div>
+            <div class="copyright hidden-xs">© Copyright  coolll.cn 创意酷 企业建站-高端网站定制设计-品牌设计-APP设计 京ICP备15030788号-1</div>
         </div>
     </div>
 <script type="text/javascript" src="./js/jquery.min.js"></script>
@@ -270,9 +287,10 @@
                                 news.forEach(item => {
                                     $('.news .news-list-con').append($(`
                                         <li class="news-item col-xs-12 col-sm-4" data-id=${item.id}>
-                                            <img src='${item.img}' />
+                                            <div class="img-con"><div><img src='${item.img}' class="imgScale" /></div></div>
                                             <p class="p1">${item.title}</p>
                                             <p class="p2">${item.content}</p>
+                                            <i></i>
                                         </li>
                                     `))
                                 });
@@ -295,34 +313,36 @@
                 if (windowWidth > 768) {
                     services.forEach(item => {
                         $('.services .service-list-con').append($(`
-                            <li class="service-item col-sm-3">
-                                <img src='${item.img}' />
-                                <p class="p1">${item.type}</p>
+                            <li class="service-item col-sm-3" data-id="${item.type}">
+                                <div class="img-con"><div><img src='${item.img}' class="imgScale" /></div></div>
+                                <a class="p1">${item.typeName}</a>
                                 <p class="p2">${item.des}</p>
                             </li>
                         `))
                     });
                     works.forEach((item) => {
                         $('.work .work-list-con').append($(`
-                            <li class="work-item" data-id="${item.id}">
-                                <img src='${item.img}' />
-                                <p class="p1">${item.name}</p>
+                            <li class="work-item col-sm-3" data-id="${item.id}">
+                                <div class="img-con" style="background: url(${item.img}) center center no-repeat; background-size: cover;"></div>
+                                <div class="text-con">
+                                    <p class="p1">${item.name}</p>
+                                    <p class="desc">${item.desc}</p>
+                                </div>
                             </li>
                         `))
-                    })
-                    setTimeout(() => {
-                        workConWidth = $('.work .work-list-con').width()
-                        $('.work .work-list-con').css({
-                            'transform': 'translateX(-'+ (workConWidth - windowWidth) / 2 +'px)'
+                        $('.work .work-list-con').on('mouseover', '.work-item', function() {
+                            $(this).addClass('active')
                         })
-                    }, 1000)
+                        $('.work .work-list-con').on('mouseout', '.work-item', function() {
+                            $(this).removeClass('active')
+                        })
+                    })
                 } else {
-
                     services.forEach(item => {
                         $('.services .service-list-con .swiper-wrapper').append($(`
-                            <div class="service-item col-sm-3 swiper-slide">
+                            <div class="service-item col-sm-3 swiper-slide" data-id="${item.type}">
                                 <img src='${item.img}' />
-                                <p class="p1">${item.type}</p>
+                                <p class="p1">${item.typeName}</p>
                                 <p class="p2">${item.des}</p>
                             </div>
                         `))
@@ -337,7 +357,7 @@
                         $('.work .work-list-con .swiper-wrapper').append($(`
                             <div class="work-item swiper-slide" data-id="${item.id}">
                                 <img src='${item.img}' />
-                                <p class="p1">${item.name}</p>
+                                <p class="p1-m">${item.name}</p>
                             </div>
                         `))
                     })
@@ -352,24 +372,9 @@
         $('.work-con .work-list-con').on('click', '.work-item', function () {
             window.location.href = `./html/worksDetail.html?id=${$(this).attr('data-id')}`
         })
-        let befClintX
-        if (windowWidth > 768) {
-            const workCon = $('.work .work-list-con')
-            function moveByMouse(ev) {
-                const nowClintX = ev.clientX
-                const newTranslateX = nowClintX - workConWidth / windowWidth * nowClintX
-                console.log(newTranslateX, $(this));
-                workCon.css({
-                    'transform': 'translateX(' + newTranslateX + 'px)'
-                })
-            }
-            $('.work .work-list-con').on({
-                // 'mouseover': function(ev) {
-                //     befClintX = ev.clientX
-                // },
-                'mousemove': moveByMouse
-            })
-        }
+        $('.services .service-list-con').on('click', '.service-item', function () {
+            window.location.href = `./html/worklist.html?type=${$(this).attr('data-id')}`
+        })
         
         $.fn.fullpage.setRecordHistory(false);
         var mySwiper = new Swiper ('.home .swiper-container', {
@@ -382,20 +387,7 @@
                 bulletActiveClass: 'active'
             },
             on: {
-                transitionStart: function(){
-                    const swiperLen = $('.home .swiper-slide').length
-                    if (this.activeIndex == 0) {
-                        $('.home .mouse').show()
-                        $('.home .button-prev').addClass('disabled') 
-                    } else if (this.activeIndex == swiperLen - 1) {
-                        $('.home .button-next').addClass('disabled')
-                        $('.home .mouse').hide()
-                    } else {
-                        $('.home .mouse').show()
-                        $('.home .button-prev').removeClass('disabled') 
-                        $('.home .button-next').removeClass('disabled') 
-                    }
-                },
+                
             },
         });
         $('.home .button-prev').on('click', function() {
@@ -403,14 +395,6 @@
         })
         $('.home .button-next').on('click', function() {
             mySwiper.slideNext()
-        })
-        $('.home .home-nav-con p').on({
-            'mouseover':  function() {
-                if (windowWidth <= 750) return
-                $('.home .home-nav-con p').removeClass('active')
-                $(this).addClass('active')
-            },
-            
         })
         // 底部鼠标
         $('.home .mouse').on('click', function() {

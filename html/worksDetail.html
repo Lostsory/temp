@@ -17,7 +17,7 @@
       background: #fff;
     }
     .p-content{
-      width: 1080px;
+      width: 56%;
       margin: 0 auto 74px;
       padding: 180px 0 40px;
       border-bottom:  .5px solid #EBEEF5;;
@@ -78,8 +78,7 @@
     .back-btn{
       position: fixed;
       left: 0;
-      top: 50%;
-      transform: translateY(-50%);
+      bottom: 7.4vh;
       width: 9vw;
       height: 56px;
       display: flex;
@@ -90,9 +89,13 @@
       font-size: 14px;
       cursor: pointer;
     }
+    .back-btn:hover img{
+      transform: translateX(-10px);
+    }
     .back-btn img{
       height: 14px;
       margin-right: 8px;
+      transition: all 200ms ease;
     }
     @media(max-width: 768px) {
       .header-mask{
@@ -208,6 +211,7 @@
     </div>
     <img class="logo-bo" src="../img/logo.png" alt="">
   </div>
+  <div class="copyright hidden-xs">© Copyright  coolll.cn 创意酷 企业建站-高端网站定制设计-品牌设计-APP设计 京ICP备15030788号-1</div>
   <script type="text/javascript" src="../js/jquery.min.js"></script>
   <script type="text/javascript" src="../js/common.js"></script>
   <script>

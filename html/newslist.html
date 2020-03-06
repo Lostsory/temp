@@ -39,25 +39,26 @@
       color: #191F38;
     }
     .work-list .work-item{
-      padding: 0 30px;
       cursor: pointer;
+      padding-bottom: 48px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid #EBEEF5;
     }
     .work-list .work-item img{
       max-width: 100%;
       height: auto;
     }
     .work-list .work-item .title{
-      padding: 24px 0;
+      padding: 40px 0;
       font-size: 18px;
       color: #191F38;
       line-height: 18px;
     }
     .work-list .work-item .content{
-      font-size: 16px;
+      font-size: 14px;
       color: rgba(25,31,56,0.40);
       letter-spacing: 0;
       line-height: 24px;
-      margin-bottom: 64px;
     }
     .no-more{
       font-size: 12px;
@@ -77,6 +78,8 @@
       }
       .work-list .work-item{
         padding: 0 .36rem;
+        border-bottom: none;
+        margin-bottom: 0;
       }
       .work-list .work-item img{
         border-radius: .2rem;
@@ -160,30 +163,45 @@
       
       </div>
       <div class="col-sm-10 work-list">
-        <div class="row"></div>
+        <div class="items"></div>
         <p class="no-more">没有更多内容啦～</p>
       </div>
     </div>
     
   </div>
-  
+  <div class="copyright hidden-xs">© Copyright  coolll.cn 创意酷 企业建站-高端网站定制设计-品牌设计-APP设计 京ICP备15030788号-1</div>
   <script type="text/javascript" src="../js/jquery.min.js"></script>
   <script type="text/javascript" src="../js/common.js"></script>
   <script>
     $(function() {
+      const windowWidth = $(window).width()
       var allworks
       $.ajax({
         url: `../json/news.json?v=${Date.now()}`,
         success: function(res) {
           allworks = res.news
           res.news.forEach(item => {
-            $('.work-list .row').append($(`
-              <div class="work-item col-sm-6" data-id="${item.id}">
-                <img src="${item.img}" />  
-                <p class="title">${item.title}</p>
-                <p class="content">${item.content}</p>
-              </div>
-            `))
+            if (windowWidth > 768) {
+              $('.work-list .items').append($(`
+                <div class="work-item row animated fadeIn" data-id="${item.id}">
+                  <div class="col-sm-6">
+                    <p class="title">${item.title}</p>
+                    <p class="content">${item.content}</p>
+                  </div>
+                  <div class="col-sm-6" ><div style="overflow:hidden"><img class="imgScale" src="${item.img}" /></div>  </div>
+                </div>
+              `))
+            } else {
+              $('.work-list .items').append($(`
+                <div class="work-item row animated fadeIn" data-id="${item.id}">
+                  <div class="col-sm-6"  style="padding: 0"><img src="${item.img}" />  </div>
+                  <div class="col-sm-6" style="padding: 0">
+                    <p class="title">${item.title}</p>
+                    <p class="content">${item.content}</p>
+                  </div>
+                </div>
+              `))
+            }
           });
         }
       })
@@ -196,19 +214,34 @@
         } else {
           newWorks = allworks.filter(item => item.type == curType)
         }
-        $('.work-list .row').html('')
+        $('.work-list .items').html('')
         newWorks.forEach(item => {
-          $('.work-list .row').append($(`
-            <div class="work-item col-sm-6 animated fadeIn" data-id="${item.id}">
-              <img src="${item.img}" />  
-              <p class="title">${item.title}</p>
-              <p class="content">${item.content}</p>
-            </div>
-          `))
+          if (windowWidth > 768) {
+            $('.work-list .items').append($(`
+              <div class="work-item row animated fadeIn" data-id="${item.id}">
+                <div class="col-sm-6">
+                  <p class="title">${item.title}</p>
+                  <p class="content">${item.content}</p>
+                </div>
+                <div class="col-sm-6" ><div style="overflow:hidden"><img class="imgScale" src="${item.img}" /></div>  </div>
+              </div>
+            `))
+          } else {
+            $('.work-list .items').append($(`
+              <div class="work-item row animated fadeIn" data-id="${item.id}">
+                <div class="col-sm-6" style="padding: 0"><img src="${item.img}" />  </div>
+                <div class="col-sm-6" style="padding: 0">
+                  <p class="title">${item.title}</p>
+                  <p class="content">${item.content}</p>
+                </div>
+              </div>
+            `))
+          }
         });
 
       })
-      $('.work-list .row').on('click', '.work-item', function () {
+      $('.work-list').on('click', '.work-item', function () {
+        console.log(232112);
         window.location.href = `./newsDetail.html?id=${$(this).attr('data-id')}`
         return
       })

@@ -153,20 +153,39 @@
     </div>
     
   </div>
-  
+  <div class="copyright hidden-xs">© Copyright  coolll.cn 创意酷 企业建站-高端网站定制设计-品牌设计-APP设计 京ICP备15030788号-1</div>
   <script type="text/javascript" src="../js/jquery.min.js"></script>
   <script type="text/javascript" src="../js/common.js"></script>
   <script>
     $(function() {
+      var getQueryVal = function(queryName) {
+        const query = decodeURI(window.location.search.substring(1));
+        const vars = query.split("&");
+        for (let i = 0; i < vars.length; i++) {
+          const pair = vars[i].split("=");
+          if (pair[0] === queryName) { return pair[1]; }
+        }
+        return null;
+      }
       var allworks
       $.ajax({
         url: `../json/works.json?v=${Date.now()}`,
         success: function(res) {
           allworks = res.works
-          res.works.forEach(item => {
+          var newWorks
+          var curType = getQueryVal('type')
+          console.log('curType', curType);
+          if (!!curType) {
+            newWorks = allworks.filter(item => item.type == curType)
+            $('.work-type-con li').removeClass('active')
+            $('.work-type-con li').eq(+curType).addClass('active')
+          } else {
+            newWorks = allworks
+          }
+          newWorks.forEach(item => {
             $('.work-list .row').append($(`
               <div class="work-item col-sm-6" data-id="${item.id}">
-                <img src="${item.img}" />  
+                <div style="overflow:hidden"><img src="${item.img}" class="imgScale" /></div>
                 <p>${item.title}</p>
               </div>
             `))
@@ -186,7 +205,7 @@
         newWorks.forEach(item => {
           $('.work-list .row').append($(`
             <div class="work-item col-sm-6 animated fadeIn" data-id="${item.id}">
-              <img src="${item.img}" />  
+              <div style="overflow:hidden"><img src="${item.img}" class="imgScale" /></div>
               <p>${item.title}</p>
             </div>
           `))
