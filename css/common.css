@@ -1164,7 +1164,7 @@ hr {
 .nav-btn.active::before{ top: 12px; left: 0; transform: rotate(-135deg); width: 28px; }
 .nav-btn.active::after{ top: 12px; left: 0; transform: rotate(135deg); width: 28px; }
 
-.contact-us{position: absolute;bottom: .86rem;left: .68rem;z-index: 3;font-size: .28rem;line-height: .28rem;font-weight: 600;}
+.contact-us{position: absolute;bottom: .86rem;left: .68rem;z-index: 3;font-size: .28rem;line-height: .28rem;font-weight: bold;}
 .nav-con{ position: fixed; right: 86px; top: 0; left: 0; right: 0; bottom: 0; z-index: 99999; display: none; background: #fff;}
 .nav-con.active{ display: flex; flex-direction: column-reverse;padding-bottom: 10vh; }
 .nav-con li{padding: 0 0 8vh 136px;}
@@ -1186,7 +1186,7 @@ hr {
   color: #f94140;
 }
 .nav-con li p:first-child{font-size: 14px; color: rgba(25,31,56,0.60); letter-spacing: 0; line-height: 14px; margin-bottom: 8px;}
-.nav-con li p:last-child{font-size: 40px; letter-spacing: 0; line-height: 40px; font-weight: 600;}
+.nav-con li p:last-child{font-size: 40px; letter-spacing: 0; line-height: 40px; font-weight: bold;}
 .copyright{
   background: #F8F8FB;
   height: 24px;
@@ -1200,6 +1200,7 @@ hr {
 
 
 @media(max-width: 768px) {
+  .imgScale:hover{transform: scale(1);}
   .logo{left: .4rem; top: .48rem; width: .96rem; height: .28rem; }
   /* .nav-btn{ right: .4rem; top: .52rem; height: .26rem; width: .26rem;  }
   .nav-btn.hover:hover::before, .nav-btn::before{ top: .04rem; width: .34rem; height: 4px;}
