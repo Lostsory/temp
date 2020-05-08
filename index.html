@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>高端网站建设【企业网站制作|网页设计】- 品牌设计 - </title>
+    <link rel="shortcut icon" href="./logo.ico">
     <link rel="stylesheet" type="text/css" href="./css/jquery.fullpage.css"/>
     <link rel="stylesheet" href="./css/swiper.min.css">
     <link rel="stylesheet" href="./css/animate.min.css">
@@ -60,7 +61,7 @@
                     <div class="swiper-slide row">
                         <div class="left-content-con col-xs-12 col-sm-7">
                             <div>
-                                <h1 class="typer-target">一站式互联网解决方案1</h1>
+                                <h1 class="typer-target">一站式互联网解决方案</h1>
                                 <p class="attention">专注于创意设计和用户体验</p>
                                 <p class="more-p hidden-xs"><span>查看更多</span><i></i></p>
                             </div>
@@ -72,8 +73,8 @@
                     <div class="swiper-slide row">
                         <div class="left-content-con col-xs-12 col-sm-7">
                             <div>
-                                <h1 class="typer-target">一站式互联网解决方案2</h1>
-                                <p class="attention">专注于创意设计和用户体验</p>
+                                <h1 class="typer-target">以结果为导向的设计策略</h1>
+                                <p class="attention">提升品牌形象与传播效率</p>
                                 <p class="more-p hidden-xs"><span>查看更多</span><i></i></p>
                             </div>
                         </div>
@@ -84,8 +85,8 @@
                     <div class="swiper-slide row">
                         <div class="left-content-con col-xs-12 col-sm-7">
                             <div>
-                                <h1 class="typer-target">一站式互联网解决方案3</h1>
-                                <p class="attention">专注于创意设计和用户体验</p>
+                                <h1 class="typer-target">用心，为您</h1>
+                                <p class="attention">从项目策划、架构设计、视觉设计到开发测试、部署上线，全程一体化服务模式</p>
                                 <p class="more-p hidden-xs"><span>查看更多</span><i></i></p>
                             </div>
                         </div>
@@ -179,9 +180,9 @@
                         <p  style="color: #191F38; font-weight: 500">wtongmy@163.com</p>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                        <input type="text" placeholder="您的姓名">
-                        <input type="text" placeholder="您的电话">
-                        <textarea rows="2" placeholder="留言内容"></textarea>
+                        <input type="text" id="name" placeholder="您的姓名">
+                        <input type="text" id="tel" placeholder="您的电话">
+                        <textarea rows="2" id="content" placeholder="留言内容"></textarea>
                         <div class="sumbit_btn">提交<i></i></div>
                     </div>
                 </div>
@@ -190,12 +191,12 @@
                     <p  style="margin-bottom: .56rem;font-size: .28rem; color: #FF4140; line-height: .28rem; font-weight: bold">15001316528</p>
                     <p class="font"  style="margin-bottom: .16rem;">邮箱：</p>
                     <p  style="color: #191F38;margin-bottom: .6rem; font-weight: bold">wtongmy@163.com</p>
-                    <input type="text" placeholder="您的姓名">
-                    <input type="text" placeholder="您的电话">
-                    <textarea rows="2" placeholder="留言内容"></textarea>
+                    <input id="name-m" type="text" placeholder="您的姓名">
+                    <input id="tel-m" type="text" placeholder="您的电话">
+                    <textarea id="content-m" rows="2" placeholder="留言内容"></textarea>
                 </div>
             </div>
-            <div class="visible-xs more-p-m">提交</div>
+            <div class="visible-xs more-p-m sumbit_btn">提交</div>
             <div class="copyright hidden-xs">© Copyright  coolll.cn 创意酷 企业建站-高端网站定制设计-品牌设计-APP设计 京ICP备15030788号-1</div>
         </div>
     </div>
@@ -261,6 +262,8 @@
         } else {
             window.requestAnimationFrame(preLoad)
         }
+        const windowWidth = $(window).width()
+        let workConWidth
         // 团队介绍信息
         $('#fullPage').fullpage({
             verticalCentered: false,
@@ -268,107 +271,115 @@
             menu: '#myMenu',
             css3: false,
             easingcss3: 'cubic-bezier(0.25, 0.1, 0.34, 0.59)',
-            // navigationPosition: 'right',
-            // slidesNavigation: 'true',
-            // slidesNavPosition: 'bottom',
             controlArrows: false,
             recordHistory: false,
             afterRender: function () {
-                
-            },
-            onLeave: function (index, nextIndex) {
-                switch (nextIndex) {
-                    case 4: 
-                    if ($('.news .news-list-con li').length === 0) {
-                        $.ajax({
-                            url: './json/news.json',
-                            success: function(res) {
-                                const news = windowWidth <= 750 ? res.news.slice(0, 1) : res.news.slice(0, 3)
-                                news.forEach(item => {
-                                    $('.news .news-list-con').append($(`
-                                        <li class="news-item col-xs-12 col-sm-4" data-id=${item.id}>
-                                            <div class="img-con"><div><img src='${item.img}' class="imgScale" /></div></div>
-                                            <p class="p1">${item.title}</p>
-                                            <p class="p2">${item.content}</p>
-                                            <i></i>
-                                        </li>
-                                    `))
-                                });
-                                $('.news .news-list-con').on('click', 'li', function () {
-                                    window.location.href = `./html/newsDetail.html?id=${$(this).attr('data-id')}`
-                                })
+                $.ajax({
+                    url: 'http://47.240.37.159:3000/api/common/index',
+                    'Content-Type': 'application/json; charset=utf-8',
+                    success: function(res) {
+                        const works = res.data.works
+                        const services = [
+                            {
+                                "img": "../img/pc.png",
+                                "typeName": "网站",
+                                "type": "1",
+                                "des": "企业官网、品牌营销、电商、门户等各类网站响应式开发适配多个终端"
+                            },
+                            {
+                                "img": "../img/phone.png",
+                                "typeName": "移动端",
+                                "type": "2",
+                                "des": "APP、小程序，WEBAPP，混合开发，提供更好的用户体验，从设计开发到上架迭代全面负责"
+                            },
+                            {
+                                "img": "../img/vi.png",
+                                "typeName": "品牌VI",
+                                "type": "3",
+                                "des": "公司logo标志、吉祥物、企业形象VI、产品包装等塑造企业统一的品牌形象与精神文化"
+                            },
+                            {
+                                "img": "../img/picture.png",
+                                "typeName": "插画",
+                                "type": "4",
+                                "des": "宣传插画、包装插画、企业漫画、微信表情以创意满足各类企业的多种需求"
                             }
+                        ]
+                        if (windowWidth > 768) {
+                            services.forEach(item => {
+                                $('.services .service-list-con').append($(`
+                                    <li class="service-item col-sm-3" data-id="${item.type}">
+                                        <div class="img-con"><div><img src='${item.img}' class="imgScale" /></div></div>
+                                        <a class="p1">${item.typeName}</a>
+                                        <p class="p2">${item.des}</p>
+                                    </li>
+                                `))
+                            });
+                            works.forEach((item) => {
+                                $('.work .work-list-con').append($(`
+                                    <li class="work-item col-sm-3" data-id="${item._id}">
+                                        <div class="img-con" style="background: url(${item.thub}) center center no-repeat; background-size: cover;"></div>
+                                        <div class="text-con">
+                                            <p class="p1">${item.title}</p>
+                                            <p class="desc">${item.desc}</p>
+                                        </div>
+                                    </li>
+                                `))
+                                $('.work .work-list-con').on('mouseover', '.work-item', function() {
+                                    $(this).addClass('active')
+                                })
+                                $('.work .work-list-con').on('mouseout', '.work-item', function() {
+                                    $(this).removeClass('active')
+                                })
+                            })
+                        } else {
+                            services.forEach(item => {
+                                $('.services .service-list-con .swiper-wrapper').append($(`
+                                    <div class="service-item col-sm-3 swiper-slide" data-id="${item.type}">
+                                        <img src='${item.img}' />
+                                        <p class="p1">${item.typeName}</p>
+                                        <p class="p2">${item.des}</p>
+                                    </div>
+                                `))
+                            });
+                            var swiper = new Swiper('.service-list-con', {
+                                slidesPerView: 'auto',
+                                spaceBetween: 0,
+                                freeMode: true,
+                            });
+
+                            works.forEach((item) => {
+                                $('.work .work-list-con .swiper-wrapper').append($(`
+                                    <div class="work-item swiper-slide" data-id="${item._id}">
+                                        <img src='${item.img}' />
+                                        <p class="p1-m" style="padding-left: .6rem">${item.title}</p>
+                                    </div>
+                                `))
+                            })
+                            var swiper = new Swiper('.work-list-con', {
+                                slidesPerView: 'auto',
+                                spaceBetween: 0,
+                                freeMode: true,
+                            });
+                        }
+                        const news = windowWidth <= 750 ? res.data.news.slice(0, 1) : res.data.news.slice(0, 3)
+                        news.forEach(item => {
+                            $('.news .news-list-con').append($(`
+                                <li class="news-item col-xs-12 col-sm-4" data-id=${item._id}>
+                                    <div class="img-con"><div><img src='${item.img}' class="imgScale" /></div></div>
+                                    <p class="p1">${item.title}</p>
+                                    <p class="p2">${item.desc}</p>
+                                    <i></i>
+                                </li>
+                            `))
+                        });
+                        $('.news .news-list-con').on('click', 'li', function () {
+                            window.location.href = `./html/newsDetail.html?id=${$(this).attr('data-id')}`
                         })
                     }
-                }
-            },
-        });
-        const windowWidth = $(window).width()
-        let workConWidth
-        $.ajax({
-            url: './json/index.json',
-            success: function(res) {
-                const services = res.services
-                const works = res.works
-                if (windowWidth > 768) {
-                    services.forEach(item => {
-                        $('.services .service-list-con').append($(`
-                            <li class="service-item col-sm-3" data-id="${item.type}">
-                                <div class="img-con"><div><img src='${item.img}' class="imgScale" /></div></div>
-                                <a class="p1">${item.typeName}</a>
-                                <p class="p2">${item.des}</p>
-                            </li>
-                        `))
-                    });
-                    works.forEach((item) => {
-                        $('.work .work-list-con').append($(`
-                            <li class="work-item col-sm-3" data-id="${item.id}">
-                                <div class="img-con" style="background: url(${item.img}) center center no-repeat; background-size: cover;"></div>
-                                <div class="text-con">
-                                    <p class="p1">${item.name}</p>
-                                    <p class="desc">${item.desc}</p>
-                                </div>
-                            </li>
-                        `))
-                        $('.work .work-list-con').on('mouseover', '.work-item', function() {
-                            $(this).addClass('active')
-                        })
-                        $('.work .work-list-con').on('mouseout', '.work-item', function() {
-                            $(this).removeClass('active')
-                        })
-                    })
-                } else {
-                    services.forEach(item => {
-                        $('.services .service-list-con .swiper-wrapper').append($(`
-                            <div class="service-item col-sm-3 swiper-slide" data-id="${item.type}">
-                                <img src='${item.img}' />
-                                <p class="p1">${item.typeName}</p>
-                                <p class="p2">${item.des}</p>
-                            </div>
-                        `))
-                    });
-                    var swiper = new Swiper('.service-list-con', {
-                        slidesPerView: 'auto',
-                        spaceBetween: 0,
-                        freeMode: true,
-                    });
-
-                    works.forEach((item) => {
-                        $('.work .work-list-con .swiper-wrapper').append($(`
-                            <div class="work-item swiper-slide" data-id="${item.id}">
-                                <img src='${item.thub}' />
-                                <p class="p1-m" style="padding-left: .6rem">${item.name}</p>
-                            </div>
-                        `))
-                    })
-                    var swiper = new Swiper('.work-list-con', {
-                        slidesPerView: 'auto',
-                        spaceBetween: 0,
-                        freeMode: true,
-                    });
-                }
+                })
             }
-        })
+        });
         $('.work-con .work-list-con').on('click', '.work-item', function () {
             window.location.href = `./html/worksDetail.html?id=${$(this).attr('data-id')}`
         })
@@ -399,6 +410,36 @@
         // 底部鼠标
         $('.home .mouse').on('click', function() {
             mySwiper.slideNext()
+        });
+        $('.contact .sumbit_btn').on('click', function() {
+            var tel = $('#tel').val() || $('#tel-m').val()
+            var name = $('#name').val() || $('#name-m').val()
+            var content = $('#content').val() || $('#content-m').val()
+            if (!name) {
+                alert('请填写您的姓名')
+                return
+            }
+            if (!tel) {
+                alert('请填写您的电话')
+                return
+            }
+            if (!content) {
+                alert('请填写您的留言内容')
+                return
+            }
+            $.ajax({
+                url: 'http://47.240.37.159:3000/api/notice/add',
+                method: 'post',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify({tel, name, content}),
+                dataType: 'json',
+                success: function(res) {
+                    console.log(res);
+                    if (res.httpCode == 200) {
+                        alert('提交成功，我们稍后会与您联系')
+                    }
+                }
+            })
         });
     });
 </script>

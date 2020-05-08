@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>高端网站建设【企业网站制作|网页设计】- 品牌设计 - </title>
+  <link rel="shortcut icon" href="../logo.ico">
+  <link rel="stylesheet" href="../editor/quill.core.css">
+  <link rel="stylesheet" href="../editor/quill.snow.css">
+  <link rel="stylesheet" href="../editor/quill.bubble.css">
   <link rel="stylesheet" href="../css/common.css">
   <style>
     .header-mask{
@@ -21,7 +25,8 @@
       max-width: 1080px;
       margin: 0 auto 74px;
       padding: 180px 0 40px;
-      border-bottom:  .5px solid #EBEEF5;;
+      border-bottom:  .5px solid #EBEEF5;
+      letter-spacing: .8px;
     }
     .p-content h1{
       font-size: 40px;
@@ -34,14 +39,9 @@
     .p-content img{
       width: 100%;
       height: auto;
-      margin-bottom: 40px;
     }
     .p-content p{
-      font-size: 16px;
-      color: rgba(25,31,56,0.80);
-      letter-spacing: 0;
-      line-height: 36px;
-      margin-bottom: 40px;
+      text-align: justify;
     }
     .footer{
       display: flex;
@@ -119,15 +119,6 @@
       .p-content img{
         width: 100%;
         height: auto;
-        margin-bottom: .3rem;
-        border-radius: .2rem;
-      }
-      .p-content p{
-        font-size: .28rem;
-        color: rgba(25,31,56,0.80);
-        letter-spacing: 0;
-        line-height: .56rem;
-        margin-bottom: .4rem;
       }
       .footer{
         width: 6.7rem;
@@ -195,7 +186,7 @@
     </div>
   </div>
   <div class="header-mask visible-xs"></div>
-  <div class="p-content">
+  <div class="p-content ql-editor">
 
   </div>
   <div class="back-btn hidden-xs">
@@ -220,10 +211,10 @@
   <script>
     $(function() {
       $.ajax({
-        url: `../json/works/${window.location.search.split('=')[1]}.json?v=${Date.now()}`,
+        url: `http://47.240.37.159:3000/api/work/detail?id=${window.location.search.split('=')[1]}`,
+        'Content-Type': 'application/json; charset=utf-8',
         success: function(res) {
-          console.log(res);
-          $('.p-content').append($(res.content))
+          $('.p-content').append($('<h1>' + res.data.title + '</h1>')).append($(res.data.content))
         }
       })
     })

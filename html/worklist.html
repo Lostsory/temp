@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>高端网站建设【企业网站制作|网页设计】- 品牌设计 - </title>
+  <link rel="shortcut icon" href="../logo.ico">
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/animate.min.css">
   <style>
@@ -169,61 +170,40 @@
         return null;
       }
       var allworks
-      $.ajax({
-        url: `../json/works.json?v=${Date.now()}`,
-        success: function(res) {
-          allworks = res.works
-          var newWorks
-          var curType = getQueryVal('type')
-          console.log('curType', curType);
-          if (!!curType) {
-            newWorks = allworks.filter(item => item.type == curType)
-            $('.work-type-con li').removeClass('active')
-            $('.work-type-con li').eq(+curType).addClass('active')
-          } else {
-            newWorks = allworks
+      var curType = getQueryVal('type')
+      if (!!curType) {
+        newWorks = allworks.filter(item => item.type == curType)
+        $('.work-type-con li').removeClass('active')
+        $('.work-type-con li').eq(+curType).addClass('active')
+      }
+      var getData = function (curType) {
+        $.ajax({
+          url: `http://47.240.37.159:3000/api/common/workList${curType ? '?type=' + curType : ''}`,
+          success: function(res) {
+            res.data.forEach(item => {
+              $('.work-list .row').append($(`
+                <div class="work-item col-sm-6" data-id="${item._id}">
+                  <div style="overflow:hidden"><img src="${item.img}" class="imgScale" /></div>
+                  <p>${item.title}</p>
+                </div>
+              `))
+            });
           }
-          newWorks.forEach(item => {
-            $('.work-list .row').append($(`
-              <div class="work-item col-sm-6" data-id="${item.id}">
-                <div style="overflow:hidden"><img src="${item.img}" class="imgScale" /></div>
-                <p>${item.title}</p>
-              </div>
-            `))
-          });
-        }
-      })
+        })
+      }
+      getData(curType)
       $('.work-type-con li').on('click', function() {
         $('.work-type-con li').removeClass('active')
         $(this).addClass('active')
-        var curType = $(this).attr('type')
-        if (curType == 0) {
-          newWorks = allworks
-        } else {
-          newWorks = allworks.filter(item => item.type == curType)
-        }
         $('.work-list .row').html('')
-        newWorks.forEach(item => {
-          $('.work-list .row').append($(`
-            <div class="work-item col-sm-6 animated fadeIn" data-id="${item.id}">
-              <div style="overflow:hidden"><img src="${item.img}" class="imgScale" /></div>
-              <p>${item.title}</p>
-            </div>
-          `))
-        });
-
+        console.log( $(this).attr('type'));
+        getData($(this).attr('type') !== '0' ? $(this).attr('type') : '')
       })
       $('.work-list .row').on('click', '.work-item', function () {
         window.location.href = `./worksDetail.html?id=${$(this).attr('data-id')}`
         return
       })
     })
-    
-
-    // x + y = 10
-    // 10 - x + 9y = 70
-
-    // 10 + 10y = 80
   </script>
 </body>
 </html>

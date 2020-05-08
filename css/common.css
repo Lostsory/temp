@@ -1198,6 +1198,23 @@ hr {
   text-align: center;
 }
 
+.ql-editor .ql-size-small{
+  font-size: 12px;
+  line-height: 24px;
+  color: #8693ab;
+}
+.ql-editor .ql-size-large{
+  font-size: 16px;
+  line-height: 36px;
+  color: #505a71;
+}
+.ql-editor .ql-size-huge{
+  font-size: 24px;
+  color: #1b2337;
+  font-weight: bold;
+  line-height: 48px;
+}
+
 
 @media(max-width: 768px) {
   .imgScale:hover{transform: scale(1);}
@@ -1245,5 +1262,22 @@ hr {
     height: .42rem;
     font-size: .24rem;
     line-height: .42rem;
+  }
+
+  .ql-editor .ql-size-small{
+    font-size: .2rem;
+    line-height: .38rem;
+    color: #8693ab;
+  }
+  .ql-editor .ql-size-large{
+    font-size: .26rem;
+    line-height: .5rem;
+    color: #505a71;
+  }
+  .ql-editor .ql-size-huge{
+    font-size: .36rem;
+    color: #1b2337;
+    font-weight: bold;
+    line-height: .7rem;
   }
 }

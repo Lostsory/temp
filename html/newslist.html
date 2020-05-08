@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>高端网站建设【企业网站制作|网页设计】- 品牌设计 - </title>
+  <link rel="shortcut icon" href="../logo.ico">
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/animate.min.css">
   <style>
@@ -185,73 +186,44 @@
   <script>
     $(function() {
       const windowWidth = $(window).width()
-      var allworks
-      $.ajax({
-        url: `../json/news.json?v=${Date.now()}`,
-        success: function(res) {
-          allworks = res.news
-          res.news.forEach(item => {
-            if (windowWidth > 768) {
-              $('.work-list .items').append($(`
-                <div class="work-item row animated fadeIn" data-id="${item.id}">
-                  <div class="col-sm-6">
-                    <p class="title">${item.title}</p>
-                    <p class="content">${item.content}</p>
+      var getData = function (curType) {
+        $.ajax({
+          url: `http://47.240.37.159:3000/api/common/newsList${curType ? '?type=' + curType : ''}`,
+          success: function(res) {
+            res.data.forEach(item => {
+              if (windowWidth > 768) {
+                $('.work-list .items').append($(`
+                  <div class="work-item row animated fadeIn" data-id="${item._id}">
+                    <div class="col-sm-6">
+                      <p class="title">${item.title}</p>
+                      <p class="content">${item.desc}</p>
+                    </div>
+                    <div class="col-sm-6" ><div style="overflow:hidden"><img class="imgScale" src="${item.img}" /></div>  </div>
                   </div>
-                  <div class="col-sm-6" ><div style="overflow:hidden"><img class="imgScale" src="${item.img}" /></div>  </div>
-                </div>
-              `))
-            } else {
-              $('.work-list .items').append($(`
-                <div class="work-item row animated fadeIn" data-id="${item.id}">
-                  <div class="col-sm-6"  style="padding: 0"><img src="${item.img}" />  </div>
-                  <div class="col-sm-6" style="padding: 0">
-                    <p class="title">${item.title}</p>
-                    <p class="content">${item.content}</p>
+                `))
+              } else {
+                $('.work-list .items').append($(`
+                  <div class="work-item row animated fadeIn" data-id="${item._id}">
+                    <div class="col-sm-6"  style="padding: 0"><img src="${item.img}" />  </div>
+                    <div class="col-sm-6" style="padding: 0">
+                      <p class="title">${item.title}</p>
+                      <p class="content">${item.desc}</p>
+                    </div>
                   </div>
-                </div>
-              `))
-            }
-          });
-        }
-      })
+                `))
+              }
+            });
+          }
+        })
+      }
+      getData()
       $('.work-type-con li').on('click', function() {
         $('.work-type-con li').removeClass('active')
         $(this).addClass('active')
-        var curType = $(this).attr('type')
-        if (curType == 0) {
-          newWorks = allworks
-        } else {
-          newWorks = allworks.filter(item => item.type == curType)
-        }
         $('.work-list .items').html('')
-        newWorks.forEach(item => {
-          if (windowWidth > 768) {
-            $('.work-list .items').append($(`
-              <div class="work-item row animated fadeIn" data-id="${item.id}">
-                <div class="col-sm-6">
-                  <p class="title">${item.title}</p>
-                  <p class="content">${item.content}</p>
-                </div>
-                <div class="col-sm-6" ><div style="overflow:hidden"><img class="imgScale" src="${item.img}" /></div>  </div>
-              </div>
-            `))
-          } else {
-            $('.work-list .items').append($(`
-              <div class="work-item row animated fadeIn" data-id="${item.id}">
-                <div class="col-sm-6" style="padding: 0"><img src="${item.img}" />  </div>
-                <div class="col-sm-6" style="padding: 0">
-                  <p class="title">${item.title}</p>
-                  <p class="content">${item.content}</p>
-                </div>
-              </div>
-            `))
-          }
-        });
-
+        getData($(this).attr('type') !== '0' ? $(this).attr('type') : '')
       })
       $('.work-list').on('click', '.work-item', function () {
-        console.log(232112);
         window.location.href = `./newsDetail.html?id=${$(this).attr('data-id')}`
         return
       })

@@ -132,7 +132,7 @@
 .work .work-list-con .work-item .text-con{position: relative;z-index: 99;transform: translateY(0);padding: 0 32px;}
 .work .work-list-con .work-item.active .text-con{transform: translateY(40%);}
 .work .work-list-con .work-item.active .text-con .p1, .work .work-list-con .work-item.active .text-con .desc{color: #fff;}
-.work .work-list-con .work-item .p1{position: relative;z-index: 99;font-size: 14px; color: #191F38;line-height: 14px;padding: 0 0 32px 0;margin-bottom: 64px;}
+.work .work-list-con .work-item .p1{position: relative;font-weight: bold;z-index: 99;font-size: 14px; color: #191F38;line-height: 14px;padding: 0 0 32px 0;margin-bottom: 64px;}
 .work .work-list-con .work-item .p1::after{content: '';display: block;width: 30px;height: 1px;background: #E4E7ED;position: absolute;z-index: 99;left: 0;bottom: 0;}
 .work .work-list-con .work-item .desc{font-size: 14px; color: rgba(25,31,56,0.40);line-height: 14px;position: relative;z-index: 99;line-height: 30px;}
 .work .more-p{position: absolute;right: 82px;bottom: 5.7vh;}
@@ -180,6 +180,7 @@
 .contact .copyright{position: absolute;bottom: 0;left: 0;}
 
 @media(max-width: 768px) {
+  .contact .sumbit_btn:hover{color: #191F38;}
   .pre-load-con{font-size: 1rem;}
   .pre-load-con .hello{line-height: 1rem;}
   .pre-load-con .hello .word{padding-right: .4rem;}
@@ -194,7 +195,7 @@
   .section .module-title p span{margin-left: .34rem;}
   .section .services-con, .section .work-con, .section .news-con, .section .contact-con{top: 2.05rem;padding-left: .4rem;padding-right: 0;}
   .section .more-p-m{position: absolute;left: 50%;transform: translateX(-50%);bottom: .64rem;border: .5px solid #191F38;text-align: center;width: 6.4rem; height: .96rem;line-height: .96rem;font-size: .28rem;}
-  .section .more-p-m a{color: #191F38;}
+  .section .more-p-m a{color: #191F38;display: block;}
 
   .home .swiper-container .swiper-slide{padding: 0 1.42rem 0 .68rem;}
   .home .left-content-con h1{font-size: .81rem;line-height: 1.2rem;font-weight:700}
