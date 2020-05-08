@@ -1265,19 +1265,19 @@ hr {
   }
 
   .ql-editor .ql-size-small{
-    font-size: .2rem;
-    line-height: .38rem;
+    font-size: .25rem;
+    line-height: .42rem;
     color: #8693ab;
   }
   .ql-editor .ql-size-large{
-    font-size: .26rem;
-    line-height: .5rem;
+    font-size: .3rem;
+    line-height: .55rem;
     color: #505a71;
   }
   .ql-editor .ql-size-huge{
-    font-size: .36rem;
+    font-size: .4rem;
     color: #1b2337;
     font-weight: bold;
-    line-height: .7rem;
+    line-height: .75rem;
   }
 }
