@@ -137,7 +137,7 @@
   <div class="header-mask visible-xs"></div>
   <div class="main-content">
     <ul class="work-type-con">
-      <li class="active" type="0">全部</li>
+      <!-- <li class="active" type="0">全部</li> -->
       <li type="1">网站</li>
       <li type="2">移动端</li>
       <li type="3">品牌VI</li>
@@ -167,13 +167,9 @@
         }
         return null;
       }
-      var allworks
-      var curType = getQueryVal('type')
-      if (!!curType) {
-        newWorks = allworks.filter(item => item.type == curType)
-        $('.work-type-con li').removeClass('active')
-        $('.work-type-con li').eq(+curType).addClass('active')
-      }
+      var curType = getQueryVal('type') || '1'
+      $('.work-type-con li').removeClass('active')
+      $('.work-type-con li').eq(+curType - 1).addClass('active')
       var getData = function (curType) {
         $.ajax({
           url: `http://47.240.37.159:3000/api/common/workList${curType ? '?type=' + curType : ''}`,
