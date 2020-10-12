@@ -187,7 +187,7 @@
       const windowWidth = $(window).width()
       var getData = function (curType) {
         $.ajax({
-          url: `http://47.240.37.159:3000/api/common/newsList${curType ? '?type=' + curType : ''}`,
+          url: `http://47.240.37.159:3000/api/common/newsList${curType != '0' ? '?type=' + curType : ''}`,
           success: function(res) {
             res.data.forEach(item => {
               if (windowWidth > 768) {
@@ -215,14 +215,26 @@
           }
         })
       }
+      var getQueryVal = function(queryName) {
+        const query = decodeURI(window.location.search.substring(1));
+        const vars = query.split("&");
+        for (let i = 0; i < vars.length; i++) {
+          const pair = vars[i].split("=");
+          if (pair[0] === queryName) { return pair[1]; }
+        }
+        return null;
+      }
+      var curType = getQueryVal('type') || '0'
       getData()
       $('.work-type-con li').on('click', function() {
         $('.work-type-con li').removeClass('active')
         $(this).addClass('active')
         $('.work-list .items').html('')
-        getData($(this).attr('type') !== '0' ? $(this).attr('type') : '')
+        curType = $(this).attr('type') !== '0' ? $(this).attr('type') : ''
+        getData(curType)
       })
       $('.work-list').on('click', '.work-item', function () {
+        // window.history.replaceState('', '', `?type=1`)
         window.location.href = `./newsDetail.html?id=${$(this).attr('data-id')}`
         return
       })
