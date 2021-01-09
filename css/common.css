@@ -1198,6 +1198,10 @@ hr {
   text-align: center;
 }
 
+.copyright a{
+  color: rgba(25,31,56,0.40);
+}
+
 .ql-editor .ql-size-small{
   font-size: 12px;
   line-height: 24px;
@@ -1263,6 +1267,7 @@ hr {
     font-size: .24rem;
     line-height: .42rem;
   }
+  
 
   .ql-editor .ql-size-small{
     font-size: .25rem;
